@@ -1,6 +1,6 @@
 /**
  * Test package relative to plugins
- * @author dubois orieux herass
+ * @author dubois orieux heras
  *
  */
 package plugin;
