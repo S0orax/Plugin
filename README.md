@@ -29,3 +29,5 @@ Projet Plugin de COO
 ##Important !!!!
 
 - Toujours faire un git pull avant de commencer à travailler
+- Pour garder votre session git ouverte :
+<code>git config --global credential.helper 'cache --timeout=3600'</code>
