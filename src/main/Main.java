@@ -1,8 +1,10 @@
 package main;
 
+import plugin.PluginFinder;
+
 public class Main {
 	
 	public static void main(String[] argv) {
-		System.out.println("Hello world !");
+		PluginFinder finder = new PluginFinder("plugins");
 	}
 }
