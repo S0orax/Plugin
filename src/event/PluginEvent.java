@@ -11,7 +11,5 @@ public class PluginEvent extends EventObject {
 	public PluginEvent(PluginFinder source) {
 		super(source);
 	}
-	
-	
 
 }
