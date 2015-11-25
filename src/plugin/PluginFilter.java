@@ -14,6 +14,10 @@ public class PluginFilter implements FilenameFilter {
 
 	@Override
 	public boolean accept(File dir, String name) {
+		if(name.endsWith(".class")) {
+			
+		}
+		
 		return name.endsWith(".class");
 	}
 

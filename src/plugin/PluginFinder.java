@@ -96,6 +96,7 @@ public class PluginFinder extends PluginFilter {
 		return this.filter;
 	}
 
+	
 	public void setInterestingFileName() {
 		for (String s : this.files) {
 			if (!this.previousFiles.contains(s)) {
