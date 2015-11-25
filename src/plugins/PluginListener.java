@@ -6,7 +6,7 @@ package plugins;
 import event.PluginEvent;
 
 /**
- * @author heras
+ * @author heras orieux dubois
  *
  */
 public interface PluginListener {
