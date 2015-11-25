@@ -1,7 +1,7 @@
 /**
  * 
  */
-package plugin;
+package plugins;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -9,6 +9,8 @@ import java.io.File;
 
 import org.junit.Test;
 
+import plugins.PluginFilter;
+
 /**
  * @author orieux
  * 
