@@ -12,5 +12,4 @@ public class PluginEvent extends EventObject {
 		super(source);
 	}
 
-
 }
