@@ -96,8 +96,12 @@ public class PluginFinder extends PluginFilter {
 		return this.filter;
 	}
 
-	
+	/** setInterestingFileName()
+	 * Compare the two list of plugins before and after a tick. It changes added to -1 if a plugin has been deleted, 0 if no changement and 1 if a plugin has been added. It also change the name of interestingName with the name of the targetted file.
+	 */
 	public void setInterestingFileName() {
+		this.interestingName ="";
+		this.added =0;
 		for (String s : this.files) {
 			if (!this.previousFiles.contains(s)) {
 				this.interestingName = s; // Nom du fichier cible
