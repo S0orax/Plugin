@@ -2,7 +2,7 @@ package event;
 
 import java.util.EventObject;
 
-import plugin.PluginFinder;
+import plugins.PluginFinder;
 
 public class PluginEvent extends EventObject {
 
@@ -11,7 +11,5 @@ public class PluginEvent extends EventObject {
 	public PluginEvent(PluginFinder source) {
 		super(source);
 	}
-	
-	
 
 }

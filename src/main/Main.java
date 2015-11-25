@@ -1,6 +1,6 @@
 package main;
 
-import plugin.PluginFinder;
+import plugins.PluginFinder;
 
 public class Main {
 	
