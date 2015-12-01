@@ -24,8 +24,8 @@ public class PluginFilter implements FilenameFilter {
 		boolean construct = false;
 		
 		try {
-			test = Class.forName(name).isAssignableFrom(Plugin.class);
-			construct = Class.forName(name).getConstructor().getParameterCount() == 0;
+			test = Class.forName("plugins."+name.replace(".class","")).isAssignableFrom(Plugin.class);
+			construct = Class.forName("plugins."+name.replace(".class","")).getConstructor().getParameterCount() == 0;
 		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException e) {
 			System.out.println("ClassNotFoundException : "+e);
 		}
