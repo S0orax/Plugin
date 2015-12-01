@@ -12,7 +12,7 @@ public class PluginAddedLogger implements PluginListener {
 
 	@Override
 	public void removingFile(PluginEvent event) {
-		
+		System.out.println("The file "+event.getFileName()+" was removed of the directory "+event.getSource().getDir());
 	}
 	
 }
