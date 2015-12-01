@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import plugins.PluginListener;
@@ -33,7 +35,10 @@ public class PluginFrame implements PluginListener{
 		this.frame.setPreferredSize(dim);
 		this.frame.setMinimumSize(dim);
 		this.frame.setMaximumSize(dim);
-		this.frame.add(new JTextArea());
+		
+		JTextArea textArea = new JTextArea();
+		
+		this.frame.add(textArea);
 		this.frame.setJMenuBar(menu);
 		this.frame.pack();
 		this.frame.setLocationRelativeTo(null);

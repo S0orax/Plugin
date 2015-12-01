@@ -7,7 +7,7 @@ import editor.PluginFrame;
 public class Main {
 	
 	public static void main(String[] argv) {
-		PluginFinder finder = new PluginFinder("plugins");
+		PluginFinder finder = new PluginFinder("dropins/plugins");
 		finder.addPluginListener(new PluginAddedLogger());
 		finder.addPluginListener(new PluginFrame());
 		finder.start();
