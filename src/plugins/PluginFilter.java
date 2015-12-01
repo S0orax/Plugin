@@ -33,7 +33,6 @@ public class PluginFilter implements FilenameFilter {
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		}
-		System.out.println(name.endsWith(".class") + " ; " + test + " ; " + construct);
 		return name.endsWith(".class") && test && construct;
 	}
 
