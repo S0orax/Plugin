@@ -22,6 +22,9 @@ public class PluginFrame implements PluginListener{
 	private JMenu toolMenu;
 	private JTextArea textArea;
 	
+	/** PublicFram()
+	 * Create a new frame with a textarea of dimension of 800x600 
+	 */
 	public PluginFrame() {
 		this.width = 800;
 		this.height = 600;
@@ -60,6 +63,9 @@ public class PluginFrame implements PluginListener{
 		return menu;
 	}
 
+	/** addingFile(PluginEvent event)
+	 * Add a tool in the tool menu
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void addingFile(PluginEvent event) {
@@ -80,6 +86,10 @@ public class PluginFrame implements PluginListener{
 		}
 	}
 
+	
+	/** removingFile(PluginEvent event)
+	 * Remove a tool in the tool menu
+	 */
 	@Override
 	public void removingFile(PluginEvent event) {
 		for(int i = 0; i < this.toolMenu.getMenuComponentCount(); i++) {

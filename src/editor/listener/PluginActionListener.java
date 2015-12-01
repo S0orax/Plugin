@@ -12,11 +12,20 @@ public class PluginActionListener implements ActionListener {
 	private Plugin plugin;
 	private JTextArea area;
 
+	/** PluginActionListener(Plugin plugin, JTextArea area)
+	 * 
+	 * @param plugin
+	 * @param area : the text
+	 */
 	public PluginActionListener(Plugin plugin, JTextArea area) {
 		this.area = area;
 		this.plugin = plugin;
 	}
 	
+	/** actionPerformed(ActionEvent e)
+	 * Use the tool on the selected text. If no text is selected, the entire text is transformed with this tool
+	 * @param e : event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(this.area.getSelectedText() != null) {
