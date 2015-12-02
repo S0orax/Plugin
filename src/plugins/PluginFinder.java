@@ -34,7 +34,7 @@ public class PluginFinder extends PluginFilter {
 	public PluginFinder(String dirPath) {
 		this.filter = new PluginFilter();
 		this.dir = new File(dirPath);
-		this.timer = new Timer(100, new MyActionListener(this));
+		this.timer = new Timer(100, new TimerActionListener(this));
 		this.files = new ArrayList<String>();
 		this.previousFiles = new ArrayList<String>();
 		this.listeners = new ArrayList<PluginListener>();
