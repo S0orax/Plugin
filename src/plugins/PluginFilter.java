@@ -32,11 +32,11 @@ public class PluginFilter implements FilenameFilter {
 			test = Plugin.class.isAssignableFrom(plugin);
 			construct = plugin.getConstructor().getParameterCount() == 0;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (SecurityException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return name.endsWith(".class") && test && construct;
 	}

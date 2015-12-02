@@ -21,12 +21,29 @@ public class PluginFilterTest {
 	public void testPluginFilter() {
 		File file = new File("inutile");
 		PluginFilter filtre = new PluginFilter();
-		assertFalse(filtre.accept(file, "test.class"));
-		assertFalse(filtre.accept(file,"test.cla"));
-		assertTrue(filtre.accept(file,"ToUppercasePlugin.class"));
-		// Ajouter ToUppercasePlugin.class dans le dossier des plugins
-		fail("A retirer lorsque le fichier .class est ajouté dans le dossier plugins (par défaut, le rendu est à faire avec le fichier dedans afin de pouvoir faire les tests)");
-		assertFalse(filtre.accept(file,"ToUppercasePlugin"));
+		assertTrue(filtre.accept(file,"ToLowercasePlugin.class"));
 	}
 
+
+	@Test(expected = NoClassDefFoundError.class)
+	public void testPluginFilterWithNotInPackagePlugin() {
+		File file = new File("inutile");
+		PluginFilter filtre = new PluginFilter();
+		assertFalse(filtre.accept(file,"PluginEvent.class"));
+	}
+	
+
+	@Test(expected = RuntimeException.class)
+	public void testPluginFilterWithNotExistingFile() {
+		File file = new File("inutile");
+		PluginFilter filtre = new PluginFilter();
+		assertFalse(filtre.accept(file,"Rien.class"));
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testPluginFilterWithNoEmptyConstructor() {
+		File file = new File("inutile");
+		PluginFilter filtre = new PluginFilter();
+		assertFalse(filtre.accept(file,"PluginWithConstructor.class"));
+	}
 }
