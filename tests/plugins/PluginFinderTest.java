@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import event.PluginEvent;
-
 public class PluginFinderTest {
 
 	private PluginFinder finder;
@@ -22,22 +20,22 @@ public class PluginFinderTest {
 	public void testCheckDirWhenAddingFile() {
 		MookPluginListener pl = new MookPluginListener();
 		this.finder.addPluginListener(pl);
-		assertFalse(pl.adding);
+		assertFalse(pl.getAdding());
 		this.finder.getFiles().add("Test.class");
 		this.finder.checkDir();
-		assertTrue(pl.adding);
+		assertTrue(pl.getAdding());
 	}
 	
 	@Test
 	public void testCheckDirWhenRemovingFile() {
 		MookPluginListener pl = new MookPluginListener();
 		this.finder.addPluginListener(pl);
-		assertFalse(pl.removing);
+		assertFalse(pl.getRemoving());
 		this.finder.getFiles().add("Test.class");
 		this.finder.checkDir();
 		this.finder.setFiles(new ArrayList<String>());
 		this.finder.checkDir();
-		assertTrue(pl.removing);
+		assertTrue(pl.getRemoving());
 	}
 	
 	@Test
@@ -54,23 +52,5 @@ public class PluginFinderTest {
 		assertEquals(1, this.finder.getPluginListeners().size());
 		this.finder.removePluginListener(pl);
 		assertEquals(0, this.finder.getPluginListeners().size());
-	}
-	
-	class MookPluginListener implements PluginListener {
-		
-		private boolean adding = false;
-		private boolean removing = false;
-		
-		@Override
-		public void addingFile(PluginEvent event) {
-			this.adding = true;
-		}
-
-		@Override
-		public void removingFile(PluginEvent event) {
-			System.out.println("test2");
-			this.removing = true;
-		}
-		
 	}
 }
