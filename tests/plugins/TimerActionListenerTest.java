@@ -1,4 +1,4 @@
-package plugin;
+package plugins;
 
 import plugins.PluginFinder;
 import plugins.TimerActionListener;

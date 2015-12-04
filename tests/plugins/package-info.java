@@ -3,4 +3,4 @@
  * @author dubois orieux heras
  *
  */
-package plugin;
+package plugins;

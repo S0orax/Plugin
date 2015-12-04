@@ -116,6 +116,14 @@ public class PluginFinder extends PluginFilter {
 	public void removePluginListener(PluginListener listener) {
 		this.listeners.remove(listener);
 	}
+	
+	/**
+	 * Get the listeners list of this plugin finder
+	 * @return the listeners
+	 */
+	public List<PluginListener> getPluginListeners() {
+		return this.listeners;
+	}
 
 	/**
 	 * Set the current files list of the current directory

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package plugin;
+package plugins;
 
 import static org.junit.Assert.*;
 
@@ -19,31 +19,27 @@ public class PluginFilterTest {
 
 	@Test
 	public void testPluginFilter() {
-		File file = new File("inutile");
 		PluginFilter filtre = new PluginFilter();
-		assertTrue(filtre.accept(file,"ToLowercasePlugin.class"));
+		assertTrue(filtre.accept(null,"ToLowercasePlugin.class"));
 	}
 
 
 	@Test(expected = NoClassDefFoundError.class)
 	public void testPluginFilterWithNotInPackagePlugin() {
-		File file = new File("inutile");
 		PluginFilter filtre = new PluginFilter();
-		assertFalse(filtre.accept(file,"PluginEvent.class"));
+		assertFalse(filtre.accept(null,"PluginEvent.class"));
 	}
 	
 
 	@Test(expected = RuntimeException.class)
 	public void testPluginFilterWithNotExistingFile() {
-		File file = new File("inutile");
 		PluginFilter filtre = new PluginFilter();
-		assertFalse(filtre.accept(file,"Rien.class"));
+		assertFalse(filtre.accept(null,"Rien.class"));
 	}
 	
 	@Test(expected = RuntimeException.class)
 	public void testPluginFilterWithNoEmptyConstructor() {
-		File file = new File("inutile");
 		PluginFilter filtre = new PluginFilter();
-		assertFalse(filtre.accept(file,"PluginWithConstructor.class"));
+		assertFalse(filtre.accept(null,"PluginWithConstructor.class"));
 	}
 }

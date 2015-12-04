@@ -1,7 +1,7 @@
 /**
  * 
  */
-package plugin;
+package plugins;
 
 /**
  * @author heras

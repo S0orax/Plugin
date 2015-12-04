@@ -30,7 +30,7 @@ public class PluginFilter implements FilenameFilter {
 			Class<?> plugin = Class.forName("plugins."
 					+ name.replace(".class", ""));
 			test = Plugin.class.isAssignableFrom(plugin);
-			construct = plugin.getConstructor().getParameterCount() == 0;
+			construct = plugin.getConstructor().getParameterTypes().length == 0;
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		} catch (NoSuchMethodException e) {
