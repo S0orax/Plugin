@@ -15,7 +15,6 @@ ce qui a un effet sur le texte lorsque le plugin est sélectionné
 
 Voici la commande à lancer pour lancer le jar
 
-
-java -jar plugin_dubois_orieux_heras.jas
+`java -jar plugin_dubois_orieux_heras.jar`
 
 Pour ajouter des plugins, ils suffis d'ajouter la class dans le dossier : ./dropins/plugins
