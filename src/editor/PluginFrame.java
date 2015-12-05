@@ -2,6 +2,7 @@ package editor;
 
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -21,6 +22,7 @@ public class PluginFrame implements PluginListener{
 	private int width, height;
 	private JMenu toolMenu;
 	private JTextArea textArea;
+	private HashMap<String, Plugin> pluginCache;
 	
 	/** PublicFram()
 	 * Create a new frame with a textarea of dimension of 800x600 
@@ -28,6 +30,7 @@ public class PluginFrame implements PluginListener{
 	public PluginFrame() {
 		this.width = 800;
 		this.height = 600;
+		this.pluginCache = new HashMap<String, Plugin>();
 		
 		Dimension dim = new Dimension(width, height);
 		this.toolMenu = new JMenu("Tool");
@@ -66,23 +69,24 @@ public class PluginFrame implements PluginListener{
 	/** addingFile(PluginEvent event)
 	 * Add a tool in the tool menu
 	 */
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public void addingFile(PluginEvent event) {
 		String className = "plugins." + event.getFileName().replace(".class", "");
 		
 		try {
-			Class<Plugin> pluginClass = (Class<Plugin>) Class.forName(className);
-			Plugin plugin = pluginClass.newInstance();
+			Class<?> pluginClass = Class.forName(className);
+			Plugin plugin = (Plugin) pluginClass.newInstance();
+			pluginCache.put(plugin.getLabel(), plugin);
 			JMenuItem pluginItem = new JMenuItem(plugin.getLabel());
 			pluginItem.addActionListener(new PluginActionListener(plugin, this.textArea));
 			this.toolMenu.add(pluginItem);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (InstantiationException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -94,9 +98,29 @@ public class PluginFrame implements PluginListener{
 	public void removingFile(PluginEvent event) {
 		for(int i = 0; i < this.toolMenu.getMenuComponentCount(); i++) {
 			JMenuItem item = this.toolMenu.getItem(i);
-			if(item.getText().equals(event.getFileName().replace(".class", ""))) {
-				this.toolMenu.remove(item);
+			Plugin plugin = this.pluginCache.get(item.getText());
+			if(plugin != null) {
+				String pluginLabel = plugin.getLabel();
+				if(item.getText().equals(pluginLabel)) {
+					this.toolMenu.remove(item);
+				}
 			}
 		}
+	}
+	
+	/**
+	 * Get the menu tool
+	 * @return the menu tool
+	 */
+	public JMenu getToolMenu() {
+		return this.toolMenu;
+	}
+	
+	/**
+	 * Get the text area
+	 * @return the text area
+	 */
+	public JTextArea getTextArea() {
+		return this.textArea;
 	}
 }

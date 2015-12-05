@@ -1,33 +1,17 @@
 # Plugin
-Projet Plugin de COO
 
-# Commencer à travailler sur le projet :
+DUBOIS Yann
+ORIEUX Baptiste
+HERAS Guillaume
 
-##Git
+05/12/2015
 
-- Se mettre dans votre workspace
-- git clone https://github.com/S0orax/Plugin.git
+## Introduction
 
-##Eclipse
+Ce logiciel est un éditeur de texte où nous pouvons ajouter des plugins de manière dynamique
+ce qui a un effet sur le texte lorsque le plugin est sélectionné
 
-- File/Import
-- Existing porject into workspace
-- Selectionner le dossin Plugin
-- Valider
-- Normalement le projet s'est ajouter à votre eclipse
+## Usage
 
-##Récupérer le code
+Voici la commande à lancer pour lancer le jar
 
-- git pull
-
-##Envoyer les modifications
-
-- git add --all
-- git commit -m "Mon message du commit"
-- git push origin master
-
-##Important !!!!
-
-- Toujours faire un git pull avant de commencer à travailler
-- Pour garder votre session git ouverte :
-<code>git config --global credential.helper 'cache --timeout=3600'</code>

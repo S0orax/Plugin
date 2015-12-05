@@ -27,16 +27,15 @@ public class PluginFilter implements FilenameFilter {
 		boolean test = false;
 		boolean construct = false;
 		try {
-			Class<?> plugin = Class.forName("plugins."
-					+ name.replace(".class", ""));
+			Class<?> plugin = Class.forName("plugins." + name.replace(".class", ""));
 			test = Plugin.class.isAssignableFrom(plugin);
 			construct = plugin.getConstructor().getParameterTypes().length == 0;
 		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e);
+			return false;
 		} catch (NoSuchMethodException e) {
-			throw new RuntimeException(e);
+			return false;
 		} catch (SecurityException e) {
-			throw new RuntimeException(e);
+			return false;
 		}
 		return name.endsWith(".class") && test && construct;
 	}

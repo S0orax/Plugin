@@ -5,11 +5,7 @@ package plugins;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-
 import org.junit.Test;
-
-import plugins.PluginFilter;
 
 /**
  * @author orieux
@@ -20,24 +16,24 @@ public class PluginFilterTest {
 	@Test
 	public void testPluginFilter() {
 		PluginFilter filtre = new PluginFilter();
-		assertTrue(filtre.accept(null,"ToLowercasePlugin.class"));
+		assertTrue(filtre.accept(null,"MookPlugin.class"));
 	}
 
 
-	@Test(expected = NoClassDefFoundError.class)
+	@Test
 	public void testPluginFilterWithNotInPackagePlugin() {
 		PluginFilter filtre = new PluginFilter();
-		assertFalse(filtre.accept(null,"PluginEvent.class"));
+		assertFalse(filtre.accept(null,"event/MookPlugin.class"));
 	}
 	
 
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void testPluginFilterWithNotExistingFile() {
 		PluginFilter filtre = new PluginFilter();
 		assertFalse(filtre.accept(null,"Rien.class"));
 	}
 	
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void testPluginFilterWithNoEmptyConstructor() {
 		PluginFilter filtre = new PluginFilter();
 		assertFalse(filtre.accept(null,"PluginWithConstructor.class"));
